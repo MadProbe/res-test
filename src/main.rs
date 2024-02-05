@@ -206,6 +206,9 @@ pub fn find_longest_running_number() -> u32 {
 }
 
 fn main() -> std::io::Result<()> {
+    if !is_x86_feature_detected!("sse4.1") || !is_x86_feature_detected!("aes") {
+        panic!("Your CPU doesn't support SSE4.1 & AES-NI instructions, you dummy dumb, you need a better CPU LOL and not this ancient bullshit!");
+    }
     let mut i = 0;
     let mut path = String::from("res-test-stuff.bin");
     let mut path_replace = false;
